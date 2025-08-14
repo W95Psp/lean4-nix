@@ -40,7 +40,7 @@ let
   tags = builtins.mapAttrs (tag: manifest: readRev manifest) manifests;
   readToolchain = toolchain:
     builtins.addErrorContext "Only leanprover/lean4:{tag} toolchains are supported" (let
-      matches = builtins.match "^[[:space:]]*leanprover/lean4:([a-zA-Z0-9\\-\\.]+)[[:space:]]*$" toolchain;
+      matches = builtins.match "^[[:space:]]*leanprover/lean4:([a-zA-Z0-9-\\.]+)[[:space:]]*$" toolchain;
       tag = builtins.head matches;
     in
       builtins.getAttr tag tags);
